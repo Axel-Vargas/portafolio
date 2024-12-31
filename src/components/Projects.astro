@@ -1,0 +1,95 @@
+---
+import NextJS from "./icons/NextJS.astro";
+import Tailwind from "./icons/Tailwind.astro";
+import { fetchGitHubRepos } from "../utils/github";
+
+const TAGS = {
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextJS,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+  },
+};
+
+interface Projects {
+  title: string;
+  description: string;
+  link: string;
+  github: string;
+  image: string;
+  tags: Array<{
+    name: string;
+    class: string;
+    icon: any; // Puedes especificar el tipo exacto de `icon` si es necesario
+  }>;
+  topics: string[];
+}
+
+let PROJECTS: Projects[] = [];
+
+// Usar `try-catch` para manejar errores de API
+try {
+  // Obtener los repositorios de GitHub
+  const githubRepos = await fetchGitHubRepos();
+  const PINNED_REPOS = ["Gestion_de_Inventarios", "Ecommerce", "Proyecto_Banco","Pagina_GADMA","Pagina_QuantumSoft2024","Calculadora"];
+
+  // Filtrar los repositorios anclados
+  PROJECTS = githubRepos
+  .filter((repo: any) => PINNED_REPOS.includes(repo.name)) 
+  .map((repo: any) => ({
+    title: repo.name,
+    description: repo.description || "Descripción no disponible.",
+    link: repo.homepage || repo.html_url,
+    github: repo.html_url,
+    image: `/projects/${repo.name}.webp`,
+    topics: repo.topics || []
+  }));
+} catch (error) {
+  console.error("Error al obtener repositorios de GitHub:", error);
+} finally {
+  console.log("Operación de carga de proyectos finalizada.");
+}
+---
+  {PROJECTS.map(({ image, title, description, topics, link, github }) => (
+    <article class="mb-24" >
+      <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2" data-aos="fade-right">
+        {title}
+      </h3>
+      <p class="text-lg mb-4 text-pretty text-white" data-aos="fade-right">{description}</p>
+      <ul class="flex gap-x-2 flex-row mb-2" data-aos="fade-right">
+        {topics.map((topic) => (
+              <li>
+                <span
+                  class="flex gap-x-2 rounded-full text-xs bg-blue-500 text-white py-2 px-2 border border-white/10"
+                  style="font-size: 17px;"
+                >
+                  {topic}
+                </span>
+              </li>
+            ))}
+      </ul>
+      <div class="flex gap-x-4">
+        <a
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-blue-400 hover:underline"
+        >
+          Ver en GitHub →
+        </a>
+      </div>
+      <img
+        data-aos="flip-left"
+        loading="lazy"
+        class="rounded shadow-2xl shadow-white/10 aspect-video mt-4"
+        src={image}
+        alt={`Captura de pantalla del proyecto ${title}`}
+      />
+    </article>
+  ))}
+

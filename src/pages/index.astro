@@ -1,0 +1,126 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import LinkedInIcon from "../components/icons/LinkedIn.astro";
+import SocialPill from "../components/SocialPill.astro";
+import GitHubIcon from "../components/icons/GitHub.astro";
+import MailIcon from "../components/icons/Mail.astro";
+import Experience from "../components/Experience.astro";
+import Briefcase from "../components/icons/Briefcase.astro";
+import About from "../components/icons/About.astro";
+import Skill from "../components/icons/Skill.astro";
+import CodeIcon from "../components/icons/Code.astro";
+import AboutMe from "../components/AboutMe.astro";
+import Projects from "../components/Projects.astro";
+import Skills from "../components/Skills.astro";
+import Instagram from "../components/icons/Instagram.astro";
+import "aos/dist/aos.css";
+
+---
+
+<script>
+  import AOS from "aos";
+  AOS.init({
+    once: true,
+    duration: 1000,
+  });
+</script>
+
+<Layout title="Portafolio Web - Axel Vargas">
+  <main class="px-4 bg-gray-900 text-white">
+    <!-- Sección de presentación -->
+    <SectionContainer class="pt-12">
+      <img
+        class="mb-12 mx-auto"
+        src="../../public/perfil.jpeg"
+        width="270"
+        style="border-radius: 50%;"
+        data-aos="fade-up"
+      />
+      <h1
+        class="text-3xl md:text-4xl lg:text-5xl font-bold text-center pb-6"
+        data-aos="fade-up"
+      >
+        ¡Hola!, Soy AXEL
+      </h1>
+      <h2
+        data-aos="fade-up"
+        class="text-xl lg:text-2xl text-center text-gray-300 max-w-[700px] mx-auto"
+      >
+        <span class="text-white">Desarrollador Web y Programador Full Stack.<p
+            class="text-yellow-300"
+          >
+            Apasionado por crear aplicaciones únicas.
+          </p></span
+        >
+      </h2>
+
+      <nav class="flex gap-4 pt-16 justify-center" data-aos="fade-up">
+        <SocialPill href="https://www.linkedin.com/in/axel-vargas1709">
+          <LinkedInIcon class="size-4 md:size-6 text-white/80" />
+          LinkedIn
+        </SocialPill>
+        <SocialPill href="https://github.com/Axel-Vargas">
+          <GitHubIcon class="size-4 md:size-6 text-white/80" />
+          GitHub
+        </SocialPill>
+        <SocialPill href="mailto:axelvargasvilla77@gmail.com">
+          <MailIcon class="size-4 md:size-6 text-white/80" />
+          Gmail
+        </SocialPill>
+        <SocialPill href="https://www.instagram.com/axel_17094?igsh=azE5YWUyaXp0NG9t">
+          <Instagram class="size-4 md:size-6 text-white/80" />
+          Instagram
+        </SocialPill>
+      </nav>
+    </SectionContainer>
+
+    <!-- Sección de habilidades técnicas -->
+    <SectionContainer id="sobre-mi">
+      <h2
+        data-aos="fade-right"
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-white/80"
+      >
+        <About class="size-7" />
+        Sobre Mi
+      </h2>
+      <AboutMe />
+    </SectionContainer>
+
+    <!-- Sección de habilidades técnicas -->
+    <SectionContainer id="habilidades">
+      <h2
+        data-aos="fade-left"
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-white/80"
+      >
+        <Skill class="size-7" />
+        Habilidades Técnicas
+      </h2>
+      <Skills />
+    </SectionContainer>
+
+    <!-- Sección de experiencia -->
+    <SectionContainer id="experiencia">
+      <h2
+        data-aos="fade-up"
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-white/80"
+      >
+        <Briefcase class="size-7" />
+        Experiencia Laboral
+      </h2>
+      <Experience />
+    </SectionContainer>
+
+    <!-- Sección de proyectos -->
+    <SectionContainer id="proyectos">
+      <h2
+        data-aos="fade-right"
+        class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-white/80"
+      >
+        <CodeIcon class="size-7" />
+        Proyectos
+      </h2>
+      <Projects />
+    </SectionContainer>
+  </main>
+</Layout>

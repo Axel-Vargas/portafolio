@@ -1,0 +1,20 @@
+---
+// Skills.astro
+const skills = [
+  { name: 'JQuery', level: 'Avanzado' },
+  { name: 'Node.js', level: 'Intermedio' },
+  { name: 'Angular', level: 'Intermedio' },
+  { name: 'PHP', level: 'Avanzado' },
+  { name: 'MySQL', level: 'Avanzado' },
+  { name: 'Typescript', level: 'Intermedio' },
+];
+
+---
+<ul class="grid grid-cols-2 gap-6 py-12" data-aos="fade-left">
+  {skills.map((skill) => (
+    <li class="bg-gray-800 p-4 rounded-lg">
+      <h3 class="text-lg font-semibold">{skill.name}</h3>
+      <p class="text-gray-400">{skill.level}</p>
+    </li>
+  ))}
+</ul>

@@ -1,0 +1,34 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+const EXPERIENCIE = [
+  {
+    date: "Marzo 2024",
+    title: "Desarrollador Móvil - Proyecto de Gestión de Luces para el Mercado Mayorista",
+    description:
+      "Participé en el desarrollo de un sistema de gestión de luces para el mercado mayorista, con el objetivo de optimizar la administración y control de inventarios de luces para eventos y proyectos comerciales.",
+
+  },
+  {
+    date: "Julio 2024",
+    title: "Prácticas Profesionales - Migración de Sistema en el Municipio de Ambato",
+    description:
+      "Durante mis prácticas en el municipio de [nombre], fui encargado de la migración de un sistema antiguo a una nueva plataforma más moderna y eficiente. Este proyecto implicó tareas de planificación, desarrollo y pruebas. ",
+  },
+  {
+    date: "Octubre 2024",
+    title: "Desarrollador Web - Página KikeVillafuerte",
+    description:
+      "Como parte de mis proyectos personales, desarrollé una página web para un artista con el fin de ayudarle a darse a conocer en línea. El sitio web presenta su trabajo, información personal. Este proyecto implicó el diseño del sitio, la implementación de funcionalidades interactivas y la optimización para una mejor experiencia de usuario.",
+  },
+];
+---
+
+<ol class="relative border-s border-gray-200 ml-3 my-12" data-aos="fade-up">
+  {
+    EXPERIENCIE.map(experiencie => (
+      <li class="mb-10 ms-4 ">
+        <ExperienceItem {...experiencie} />
+      </li>
+    ))
+  }
+</ol>

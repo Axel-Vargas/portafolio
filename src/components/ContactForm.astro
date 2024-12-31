@@ -1,0 +1,30 @@
+---
+// ContactForm.astro
+---
+<form class="space-y-4">
+    <input
+      type="text"
+      name="name"
+      placeholder="Tu nombre"
+      class="w-full p-3 bg-gray-800 text-white rounded-lg"
+    />
+    <input
+      type="email"
+      name="email"
+      placeholder="Tu correo electrónico"
+      class="w-full p-3 bg-gray-800 text-white rounded-lg"
+    />
+    <textarea
+      name="message"
+      rows="4"
+      placeholder="Tu mensaje"
+      class="w-full p-3 bg-gray-800 text-white rounded-lg"
+    ></textarea>
+    <button
+      type="submit"
+      class="w-full p-3 bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-400"
+    >
+      Enviar mensaje
+    </button>
+  </form>
+  
